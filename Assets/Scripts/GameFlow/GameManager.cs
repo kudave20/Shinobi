@@ -13,6 +13,7 @@ namespace Shinobi.GameFlow
         [Header("프리팹")]
         [SerializeField] private Player playerPrefab = null;
         [SerializeField] private ExperienceBar experienceBar = null;
+        [SerializeField] private CardSelectUI cardSelectUI = null;
 
         [SerializeField] private GameObject wall = null;
 
@@ -32,6 +33,7 @@ namespace Shinobi.GameFlow
             player.onLevelUp += () => StartCoroutine(OnPlayerLevelUp());
 
             experienceBar.Init(player);
+            cardSelectUI.Init(() => { isCardSelected = true; });
 
             StartCoroutine(GameFlow());
         }
@@ -40,7 +42,13 @@ namespace Shinobi.GameFlow
         {
             Time.timeScale = 0;
 
+            cardSelectUI.Enable();
+
             yield return new WaitUntil(() => isCardSelected);
+
+            isCardSelected = false;
+
+            cardSelectUI.Disable();
 
             Time.timeScale = 1f;
         }
