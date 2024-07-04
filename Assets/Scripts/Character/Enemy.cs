@@ -14,9 +14,11 @@ namespace Shinobi.Character
     [RequireComponent(typeof(Health))]
     public class Enemy : MonoBehaviour
     {
-        [SerializeField] protected float speed = 1f;
-        [SerializeField] protected float damage = 10f;
+        [SerializeField] private float speed = 1f;
+        [SerializeField] private float damage = 10f;
+        [SerializeField] private float experiencePoint = 10f;
 
+        private Health health = null;
         private GameObject wall = null;
         private float attackY = 0; // 벽을 공격하는 y좌표
 
@@ -26,6 +28,9 @@ namespace Shinobi.Character
         {
             this.wall = wall;
             attackY = wall.transform.position.y + OFFSET_Y;
+
+            health = GetComponent<Health>();
+            health.Init(experiencePoint);
         }
 
         private void Update()
@@ -47,7 +52,7 @@ namespace Shinobi.Character
 
         private void Attack()
         {
-            wall.GetComponent<Health>().TakeDamage(damage);
+            wall.GetComponent<Health>().TakeDamage(damage, gameObject, /* GameOver */ null);
         }
 
         private bool CanAttack()

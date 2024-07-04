@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 namespace Shinobi.Attribute
@@ -8,19 +7,33 @@ namespace Shinobi.Attribute
     {
         [SerializeField] private float healthPoint = 100f;
 
-        public void TakeDamage(float damage)
+        private float experiencePoint = 0;
+
+        public void Init(float experiencePoint)
+        {
+            this.experiencePoint = experiencePoint;
+        }
+
+        public void TakeDamage(float damage, GameObject instigator, Action<float> onDie)
         {
             healthPoint = Mathf.Max(0, healthPoint - damage);
 
             if (healthPoint <= 0)
             {
-                Die();
+                Die(onDie);
             }
         }
 
-        private void Die()
+        private void Die(Action<float> onDie)
         {
+            onDie?.Invoke(experiencePoint);
+
             Destroy(gameObject);
+        }
+
+        public bool IsDead()
+        {
+            return healthPoint <= 0;
         }
     }
 }

@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be733d39a3267104eb7f7875e3a14179, type: 3}
   m_Name: Wave1
   m_EditorClassIdentifier: 
-  spawnDelay: 0.5
+  spawnDelay: 2
   spawnSettings:
   - enemyType: 0
-    spawnCount: 5
+    spawnCount: 20
   - enemyType: 1
-    spawnCount: 3
+    spawnCount: 8
   prefabSettings:
   - enemyType: 0
     prefab: {fileID: 7170356643766329246, guid: 5182ad823102b7548b28634392e25e07, type: 3}

@@ -1,4 +1,5 @@
 using Shinobi.Attribute;
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -9,14 +10,18 @@ namespace Shinobi.Projectile
         private float damage = 0;
         private float speed = 0;
         private bool isPiercing = false;
+        private GameObject shooter = null;
+        private Action<float> onKill;
 
         private const float RADIUS = 0.1f;
 
-        public void Init(float damage, float speed, bool isPiercing)
+        public void Init(float damage, float speed, bool isPiercing, GameObject shooter, Action<float> onKill)
         {
             this.damage = damage;
             this.speed = speed;
             this.isPiercing = isPiercing;
+            this.shooter = shooter;
+            this.onKill = onKill;
         }
 
         public virtual void Launch(GameObject target)
@@ -39,7 +44,7 @@ namespace Shinobi.Projectile
                 var health = target.collider?.GetComponent<Health>();
                 if (health != null)
                 {
-                    health.TakeDamage(damage);
+                    health.TakeDamage(damage, shooter, onKill);
 
                     if (!isPiercing)
                     {

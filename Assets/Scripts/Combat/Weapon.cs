@@ -1,4 +1,5 @@
 using Shinobi.Projectile;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,9 +19,13 @@ namespace Shinobi.Combat
 
         private float timer = 0;
         private Bullet bullet = null;
+        private GameObject shooter = null;
+        private Action<float> onKill = null;
 
-        public void Init()
+        public void Init(GameObject shooter, Action<float> onKill)
         {
+            this.shooter = shooter;
+            this.onKill = onKill;
         }
 
         /// <summary>
@@ -46,7 +51,7 @@ namespace Shinobi.Combat
             if (attackTarget != null)
             {
                 bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-                bullet.Init(damage, speed, isPiercing);
+                bullet.Init(damage, speed, isPiercing, shooter, onKill);
                 bullet.Launch(attackTarget);
             }
         }

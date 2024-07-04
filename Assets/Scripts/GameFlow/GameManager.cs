@@ -1,5 +1,6 @@
 using Shinobi.Character;
 using Shinobi.Core;
+using Shinobi.UI;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,7 @@ namespace Shinobi.GameFlow
     {
         [Header("프리팹")]
         [SerializeField] private Player playerPrefab = null;
+        [SerializeField] private ExperienceBar experienceBar = null;
 
         [SerializeField] private GameObject wall = null;
 
@@ -20,12 +22,27 @@ namespace Shinobi.GameFlow
         [SerializeField] private Vector2 enemySpawnPointLeftLimit;
         [SerializeField] private Vector2 enemySpawnPointRightLimit;
 
+        private bool isCardSelected = false;
+
         public void Start()
         {
             Player player = Instantiate(playerPrefab, playerPosition, Quaternion.identity);
             player.Init();
 
+            player.onLevelUp += () => StartCoroutine(OnPlayerLevelUp());
+
+            experienceBar.Init(player);
+
             StartCoroutine(GameFlow());
+        }
+
+        private IEnumerator OnPlayerLevelUp()
+        {
+            Time.timeScale = 0;
+
+            yield return new WaitUntil(() => isCardSelected);
+
+            Time.timeScale = 1f;
         }
 
         private IEnumerator GameFlow()

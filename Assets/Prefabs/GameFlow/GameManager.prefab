@@ -45,8 +45,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 522712012556192404, guid: 4c876521148b6f941b7dac200816c99c, type: 3}
+  experienceBar: {fileID: 0}
   wall: {fileID: 0}
   waveConfig: {fileID: 11400000, guid: 8693d3aaa49ee4d49827fec666d75251, type: 2}
   playerPosition: {x: 0, y: -4.5}
-  enemySpawnPointLeftLimit: {x: -2, y: 4}
-  enemySpawnPointRightLimit: {x: 2, y: 4}
+  enemySpawnPointLeftLimit: {x: -2, y: 3}
+  enemySpawnPointRightLimit: {x: 2, y: 3}
