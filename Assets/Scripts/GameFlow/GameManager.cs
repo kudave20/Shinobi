@@ -14,6 +14,7 @@ namespace Shinobi.GameFlow
         [SerializeField] private Player playerPrefab = null;
         [SerializeField] private ExperienceBar experienceBar = null;
         [SerializeField] private CardSelectUI cardSelectUI = null;
+        [SerializeField] private SpeedUpUI speedUpUI = null;
 
         [SerializeField] private GameObject wall = null;
 
@@ -34,12 +35,15 @@ namespace Shinobi.GameFlow
 
             experienceBar.Init(player);
             cardSelectUI.Init(() => { isCardSelected = true; });
+            speedUpUI.Init();
 
             StartCoroutine(GameFlow());
         }
 
         private IEnumerator OnPlayerLevelUp()
         {
+            float originalTimeScale = Time.timeScale;
+
             Time.timeScale = 0;
 
             cardSelectUI.Enable();
@@ -50,7 +54,7 @@ namespace Shinobi.GameFlow
 
             cardSelectUI.Disable();
 
-            Time.timeScale = 1f;
+            Time.timeScale = originalTimeScale;
         }
 
         private IEnumerator GameFlow()
