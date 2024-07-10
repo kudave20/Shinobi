@@ -15,6 +15,8 @@ namespace Shinobi.Character
 
         private List<Weapon> weapons = new List<Weapon>();
 
+        public Dictionary<WeaponType, Weapon> WeaponDic => weapons.ToDictionary(x => x.WeaponType);
+
         private float experience = 0;
         private int level = 0;
 

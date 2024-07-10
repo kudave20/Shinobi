@@ -26,7 +26,8 @@ namespace Shinobi.Trait
                 player.AddWeapon(traitConfig.WeaponInCard);
             }
 
-            traitConfig.WeaponInCard.IncreaseStat(traitConfig.StatToIncrease, traitConfig.IncreaseAmount);
+            var weapon = player.WeaponDic[traitConfig.WeaponInCard.WeaponType];
+            weapon.IncreaseStat(traitConfig.StatToIncrease, traitConfig.IncreaseAmount);
         }
     }
 }
