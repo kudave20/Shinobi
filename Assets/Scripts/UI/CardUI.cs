@@ -15,13 +15,19 @@ namespace Shinobi.UI
         [SerializeField] private Image weaponImage = null;
         [SerializeField] private TMP_Text statText = null;
 
-        private CardTrait cardTrait;
+        private CardTrait cardTrait = null;
+        private TraitManager traitManager = null;
 
         public void Init(Action onCardSelected, TraitManager traitManager)
         {
+            this.traitManager = traitManager;
+
             clickPanel.onClick.AddListener(() => onCardSelected?.Invoke());
             clickPanel.onClick.AddListener(OnClicked);
+        }
 
+        public void CardSetup()
+        {
             cardTrait = traitManager.GetRandomTrait();
 
             weaponImage.color = cardTrait.TraitConfig.WeaponColor;

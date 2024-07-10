@@ -55,7 +55,6 @@ namespace Shinobi.Projectile
                 yield return null;
             }
 
-            print("DESTROY!");
             Destroy(gameObject);
         }
 
