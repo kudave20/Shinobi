@@ -103,11 +103,11 @@ namespace Shinobi.GameFlow
 
             if (hasClear)
             {
-                print("클리어!");
+                uiManager.ClearUI.gameObject.SetActive(true);
             }
             else
             {
-                print("게임 오버!");
+                uiManager.OverUI.gameObject.SetActive(true);
             }
         }
     }
