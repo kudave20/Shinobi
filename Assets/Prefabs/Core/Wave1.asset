@@ -20,6 +20,6 @@ MonoBehaviour:
     spawnCount: 8
   prefabSettings:
   - enemyType: 0
-    prefab: {fileID: 7170356643766329246, guid: 5182ad823102b7548b28634392e25e07, type: 3}
+    prefab: {fileID: 8280086791763787485, guid: 5182ad823102b7548b28634392e25e07, type: 3}
   - enemyType: 1
-    prefab: {fileID: 2278522905932412059, guid: a852fbb43df1bfe41bd58dda9746e592, type: 3}
+    prefab: {fileID: 6966280231985584173, guid: a852fbb43df1bfe41bd58dda9746e592, type: 3}

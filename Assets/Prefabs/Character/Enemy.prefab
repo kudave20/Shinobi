@@ -261,10 +261,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4450085539129120443}
-  - component: {fileID: 2400192543881749680}
-  - component: {fileID: 7641043387591374844}
   - component: {fileID: 756163226481928017}
   - component: {fileID: 812524827670330244}
+  - component: {fileID: 5947459497959290993}
   m_Layer: 3
   m_Name: Enemy
   m_TagString: Untagged
@@ -290,35 +289,6 @@ Transform:
   - {fileID: 7522338480108824901}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2400192543881749680
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8290916193708326019}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b57161f37a1f9d048b288f31b5cff02d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 0.3
-  damage: 10
-  experiencePoint: 10
-  attackRapidity: 1.5
---- !u!114 &7641043387591374844
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8290916193708326019}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: afedfd3856904504a9b3427a00f89f9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthPoint: 100
 --- !u!212 &756163226481928017
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -416,3 +386,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &5947459497959290993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8290916193708326019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afedfd3856904504a9b3427a00f89f9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthPoint: 100

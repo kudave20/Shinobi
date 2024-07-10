@@ -8,27 +8,29 @@ namespace Shinobi.Attribute
         [SerializeField] private float healthPoint = 100f;
 
         private float experiencePoint = 0;
+        private event Action onDie = null;
 
-        public void Init(float experiencePoint)
+        public void Init(float experiencePoint, Action onDie)
         {
             this.experiencePoint = experiencePoint;
+            this.onDie = onDie;
         }
 
-        public void TakeDamage(float damage, GameObject instigator, Action<float> onDie)
+        public void TakeDamage(float damage, GameObject instigator, Action<float> onKilled)
         {
             healthPoint = Mathf.Max(0, healthPoint - damage);
 
             if (healthPoint <= 0)
             {
-                Die(onDie);
+                Die(onKilled);
             }
         }
 
-        private void Die(Action<float> onDie)
+        private void Die(Action<float> onKilled)
         {
-            onDie?.Invoke(experiencePoint);
+            onKilled?.Invoke(experiencePoint);
 
-            Destroy(gameObject);
+            onDie?.Invoke();
         }
 
         public bool IsDead()

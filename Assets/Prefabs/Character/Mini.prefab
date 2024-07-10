@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &4813515699174587182
+--- !u!1001 &4526613385632927787
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,15 +10,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 756163226481928017, guid: a254c228635d3624083760b6e9c918b8, type: 3}
       propertyPath: m_Color.b
-      value: 0.254539
+      value: 0.47106057
       objectReference: {fileID: 0}
     - target: {fileID: 756163226481928017, guid: a254c228635d3624083760b6e9c918b8, type: 3}
       propertyPath: m_Color.g
-      value: 0.254539
+      value: 0.8490566
       objectReference: {fileID: 0}
     - target: {fileID: 756163226481928017, guid: a254c228635d3624083760b6e9c918b8, type: 3}
       propertyPath: m_Color.r
-      value: 0.8301887
+      value: 0.3964934
+      objectReference: {fileID: 0}
+    - target: {fileID: 2400192543881749680, guid: a254c228635d3624083760b6e9c918b8, type: 3}
+      propertyPath: damage
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2400192543881749680, guid: a254c228635d3624083760b6e9c918b8, type: 3}
+      propertyPath: experiencePoint
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 4450085539129120443, guid: a254c228635d3624083760b6e9c918b8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -34,31 +42,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6431533689852961620, guid: a254c228635d3624083760b6e9c918b8, type: 3}
       propertyPath: m_Color.b
-      value: 0.30704877
+      value: 0.4914698
       objectReference: {fileID: 0}
     - target: {fileID: 6431533689852961620, guid: a254c228635d3624083760b6e9c918b8, type: 3}
       propertyPath: m_Color.g
-      value: 0.30704877
+      value: 0.8396226
       objectReference: {fileID: 0}
     - target: {fileID: 6431533689852961620, guid: a254c228635d3624083760b6e9c918b8, type: 3}
       propertyPath: m_Color.r
-      value: 0.8679245
+      value: 0.43169275
       objectReference: {fileID: 0}
     - target: {fileID: 7701259913371686509, guid: a254c228635d3624083760b6e9c918b8, type: 3}
       propertyPath: m_Color.b
-      value: 0.30838373
+      value: 0.226661
       objectReference: {fileID: 0}
     - target: {fileID: 7701259913371686509, guid: a254c228635d3624083760b6e9c918b8, type: 3}
       propertyPath: m_Color.g
-      value: 0.30838373
+      value: 0.764151
       objectReference: {fileID: 0}
     - target: {fileID: 7701259913371686509, guid: a254c228635d3624083760b6e9c918b8, type: 3}
       propertyPath: m_Color.r
-      value: 0.8490566
+      value: 0.111739054
       objectReference: {fileID: 0}
     - target: {fileID: 8290916193708326019, guid: a254c228635d3624083760b6e9c918b8, type: 3}
       propertyPath: m_Name
-      value: Rat
+      value: Mini
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -66,26 +74,27 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8290916193708326019, guid: a254c228635d3624083760b6e9c918b8, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8280086791763787485}
+      addedObject: {fileID: 6966280231985584173}
   m_SourcePrefab: {fileID: 100100000, guid: a254c228635d3624083760b6e9c918b8, type: 3}
---- !u!1 &3585511127529129901 stripped
+--- !u!1 &5611065938216053928 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8290916193708326019, guid: a254c228635d3624083760b6e9c918b8, type: 3}
-  m_PrefabInstance: {fileID: 4813515699174587182}
+  m_PrefabInstance: {fileID: 4526613385632927787}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8280086791763787485
+--- !u!114 &6966280231985584173
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3585511127529129901}
+  m_GameObject: {fileID: 5611065938216053928}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10ed561998a97d244b053e481e90649b, type: 3}
+  m_Script: {fileID: 11500000, guid: aafee87f29fbabe438d2f2f880fa4d44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 0.5
   damage: 10
   experiencePoint: 10
-  attackRapidity: 1.5
+  attackRapidity: 2
+  miniPrefab: {fileID: 0}

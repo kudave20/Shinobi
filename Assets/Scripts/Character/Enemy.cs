@@ -13,22 +13,23 @@ namespace Shinobi.Character
     }
 
     [RequireComponent(typeof(Health))]
-    public class Enemy : MonoBehaviour
+    public abstract class Enemy : MonoBehaviour
     {
         [SerializeField] private float speed = 1f;
         [SerializeField] private float damage = 10f;
         [SerializeField] private float experiencePoint = 10f;
         [SerializeField] private float attackRapidity = 1.5f;
 
+        protected GameObject wall = null;
+
+        protected Action onGameOver = null;
+
         private Health health = null;
-        private GameObject wall = null;
         private float attackY = 0; // 벽을 공격하는 y좌표
 
         private const float OFFSET_Y = 0.25f; // 벽과의 y좌표 간격
 
         private float attackTimer = 0;
-
-        public event Action onGameOver = null;
 
         public void Init(GameObject wall, Action onGameOver)
         {
@@ -36,7 +37,7 @@ namespace Shinobi.Character
             attackY = wall.transform.position.y + OFFSET_Y;
 
             health = GetComponent<Health>();
-            health.Init(experiencePoint);
+            health.Init(experiencePoint, Die);
             
             this.onGameOver = onGameOver;
         }
@@ -82,5 +83,7 @@ namespace Shinobi.Character
         {
             return transform.position.y > attackY;
         }
+
+        protected abstract void Die();
     }
 }

@@ -29,6 +29,18 @@ PrefabInstance:
       value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 4450085539129120443, guid: a254c228635d3624083760b6e9c918b8, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4450085539129120443, guid: a254c228635d3624083760b6e9c918b8, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4450085539129120443, guid: a254c228635d3624083760b6e9c918b8, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4450085539129120443, guid: a254c228635d3624083760b6e9c918b8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
@@ -71,5 +83,30 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8290916193708326019, guid: a254c228635d3624083760b6e9c918b8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6966280231985584173}
   m_SourcePrefab: {fileID: 100100000, guid: a254c228635d3624083760b6e9c918b8, type: 3}
+--- !u!1 &5611065938216053928 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8290916193708326019, guid: a254c228635d3624083760b6e9c918b8, type: 3}
+  m_PrefabInstance: {fileID: 4526613385632927787}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6966280231985584173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5611065938216053928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aafee87f29fbabe438d2f2f880fa4d44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0.5
+  damage: 30
+  experiencePoint: 30
+  attackRapidity: 2
+  miniPrefab: {fileID: 6966280231985584173, guid: 6c10004ad0dee9a478a0e1a47e5cf5c3, type: 3}
