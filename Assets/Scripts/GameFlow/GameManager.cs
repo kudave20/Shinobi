@@ -23,6 +23,7 @@ namespace Shinobi.GameFlow
         [SerializeField] private Vector2 enemySpawnPointRightLimit;
 
         private bool isCardSelected = false;
+        private List<Enemy> enemies = new List<Enemy>();
 
         public void Start()
         {
@@ -62,6 +63,8 @@ namespace Shinobi.GameFlow
         {
             yield return SpawnEnemies();
 
+            yield return new WaitUntil(() => enemies.Count == 0);
+
             GameOver(true);
         }
 
@@ -84,7 +87,14 @@ namespace Shinobi.GameFlow
                 Vector2 randomPoint = enemySpawnPointLeftLimit + new Vector2(Random.Range(0, delta), 0);
 
                 var enemy = Instantiate(waveConfig.PrefabSettings[enemyType], randomPoint, Quaternion.identity);
-                enemy.Init(wall, () => GameOver(false));
+                enemy.Init(wall, () => GameOver(false), x => enemies.Remove(x));
+
+                if (enemy is Slime slime)
+                {
+                    slime.onMiniSpawned += x => enemies.Add(x);
+                }
+
+                enemies.Add(enemy);
 
                 --enemySpawnCountDic[enemyType];
 

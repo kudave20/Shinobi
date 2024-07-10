@@ -23,6 +23,7 @@ namespace Shinobi.Character
         protected GameObject wall = null;
 
         protected Action onGameOver = null;
+        protected Action<Enemy> onDie = null;
 
         private Health health = null;
         private float attackY = 0; // 벽을 공격하는 y좌표
@@ -31,7 +32,7 @@ namespace Shinobi.Character
 
         private float attackTimer = 0;
 
-        public void Init(GameObject wall, Action onGameOver)
+        public void Init(GameObject wall, Action onGameOver, Action<Enemy> onDie)
         {
             this.wall = wall;
             attackY = wall.transform.position.y + OFFSET_Y;
@@ -40,6 +41,7 @@ namespace Shinobi.Character
             health.Init(experiencePoint, Die);
             
             this.onGameOver = onGameOver;
+            this.onDie = onDie;
         }
 
         private void Update()
@@ -84,6 +86,9 @@ namespace Shinobi.Character
             return transform.position.y > attackY;
         }
 
-        protected abstract void Die();
+        protected virtual void Die()
+        {
+            onDie?.Invoke(this);
+        }
     }
 }
