@@ -1,6 +1,7 @@
 using Shinobi.Combat;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Shinobi.Character
@@ -24,15 +25,27 @@ namespace Shinobi.Character
         {
             foreach (var weaponPrefab in weaponPrefabs)
             {
-                Weapon weapon = Instantiate(weaponPrefab, transform);
-                weapon.Init(gameObject, OnKill);
-                AddWeapon(weapon);
+                AddWeapon(weaponPrefab);
             }
         }
 
-        public void AddWeapon(Weapon weapon)
+        /// <summary>
+        /// 무기 장착
+        /// </summary>
+        public void AddWeapon(Weapon weaponPrefab)
         {
+            var weapon = Instantiate(weaponPrefab, transform);
             weapons.Add(weapon);
+            weapon.Init(gameObject, OnKill);
+            weapon.transform.position = transform.position;
+        }
+
+        /// <summary>
+        /// 무기 장착되어 있는지 확인
+        /// </summary>
+        public bool IsWeaponEquipped(WeaponType weaponType)
+        {
+            return weapons.Select(x => x.WeaponType).Contains(weaponType);
         }
 
         private void Update()
@@ -46,6 +59,9 @@ namespace Shinobi.Character
             }
         }
 
+        /// <summary>
+        /// 적 사살 시 호출
+        /// </summary>
         private void OnKill(float experiencePoint)
         {
             IncreaseExperience(experiencePoint);

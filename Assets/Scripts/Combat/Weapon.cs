@@ -1,21 +1,36 @@
 using Shinobi.Projectile;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Shinobi.Combat
 {
+    public enum WeaponStat
+    {
+        Damage,
+        Range,
+        Rapidity
+    };
+
+    public enum WeaponType
+    {
+        Kunai,
+        IceJavelin,
+        Fireball
+    }
+
     public class Weapon : MonoBehaviour
     {
         [SerializeField] private Bullet bulletPrefab = null;
 
         [Header("무기 스탯")]
-        [SerializeField] private float coolTime = 1f;
+        [SerializeField] private float rapidity = 1f;
         [SerializeField] private float damage = 10f;
         [SerializeField] private float speed = 5f;
         [SerializeField] private float range = 10f;
         [SerializeField] private bool isPiercing = false;
+        [SerializeField] private WeaponType weaponType;
+
+        public WeaponType WeaponType => weaponType;
 
         private float timer = 0;
         private Bullet bullet = null;
@@ -64,13 +79,31 @@ namespace Shinobi.Combat
         {
             timer += Time.deltaTime;
 
-            if (timer >= coolTime)
+            if (timer >= rapidity)
             {
                 timer = 0;
                 return true;
             }
 
             return false;
+        }
+
+        public void IncreaseStat(WeaponStat statToIncrease, float increaseAmount)
+        {
+            switch (statToIncrease)
+            {
+                case WeaponStat.Damage:
+                    damage *= (1 + increaseAmount);
+                    break;
+                case WeaponStat.Range:
+                    range *= (1 + increaseAmount);
+                    break;
+                case WeaponStat.Rapidity:
+                    rapidity *= (1 - increaseAmount);
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
 using Shinobi.Character;
+using Shinobi.Core;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -20,10 +21,10 @@ namespace Shinobi.UI
         public GameObject ClearUI => clearUI;
         public GameObject OverUI => overUI;
 
-        public void Init(Player player, Action onCardSelected)
+        public void Init(Player player, Action onCardSelected, TraitManager traitManager)
         {
             experienceBar.Init(player);
-            cardSelectUI.Init(onCardSelected);
+            cardSelectUI.Init(onCardSelected, traitManager);
             speedUpUI.Init();
         }
     }

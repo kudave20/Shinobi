@@ -235,8 +235,6 @@ MonoBehaviour:
   - 100
   weaponPrefabs:
   - {fileID: 3553495635886558743, guid: 9314b588964f82a41b1581d3106170bd, type: 3}
-  - {fileID: 3553495635886558743, guid: 85b94f516e10f51409656750105f5212, type: 3}
-  - {fileID: 3553495635886558743, guid: 1f5c26581dc873e4784dfc4d2d0a5bb6, type: 3}
 --- !u!1 &6673193666234824522
 GameObject:
   m_ObjectHideFlags: 0

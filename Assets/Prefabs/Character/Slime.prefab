@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5947459497959290993, guid: a254c228635d3624083760b6e9c918b8, type: 3}
+      propertyPath: healthPoint
+      value: 300
+      objectReference: {fileID: 0}
     - target: {fileID: 6431533689852961620, guid: a254c228635d3624083760b6e9c918b8, type: 3}
       propertyPath: m_Color.b
       value: 0.4914698
@@ -105,7 +109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aafee87f29fbabe438d2f2f880fa4d44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.5
+  speed: 0.2
   damage: 30
   experiencePoint: 30
   attackRapidity: 2

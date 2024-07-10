@@ -13,6 +13,7 @@ namespace Shinobi.GameFlow
         [Header("프리팹")]
         [SerializeField] private Player playerPrefab = null;
         [SerializeField] private UIManager uiManager = null;
+        [SerializeField] private TraitManager traitManager = null;
 
         [SerializeField] private GameObject wall = null;
 
@@ -32,16 +33,24 @@ namespace Shinobi.GameFlow
 
             player.onLevelUp += () => StartCoroutine(OnPlayerLevelUp());
 
-            uiManager.Init(player, OnCardSelected);
+            traitManager.Init(player);
+
+            uiManager.Init(player, OnCardSelected, traitManager);
 
             StartCoroutine(GameFlow());
         }
 
+        /// <summary>
+        /// 카드 선택 시 호출
+        /// </summary>
         private void OnCardSelected()
         {
             isCardSelected = true;
         }
 
+        /// <summary>
+        /// 레벨업 시 호출
+        /// </summary>
         private IEnumerator OnPlayerLevelUp()
         {
             float originalTimeScale = Time.timeScale;
@@ -58,7 +67,10 @@ namespace Shinobi.GameFlow
 
             Time.timeScale = originalTimeScale;
         }
-
+        
+        /// <summary>
+        /// 게임 흐름
+        /// </summary>
         private IEnumerator GameFlow()
         {
             yield return SpawnEnemies();
@@ -68,6 +80,9 @@ namespace Shinobi.GameFlow
             GameOver(true);
         }
 
+        /// <summary>
+        /// 적 소환
+        /// </summary>
         private IEnumerator SpawnEnemies()
         {
             int totalSpawnCount = 0;
@@ -107,6 +122,9 @@ namespace Shinobi.GameFlow
             }
         }
 
+        /// <summary>
+        /// 게임 끝
+        /// </summary>
         private void GameOver(bool hasClear)
         {
             Time.timeScale = 0;

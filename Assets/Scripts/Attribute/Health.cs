@@ -16,6 +16,9 @@ namespace Shinobi.Attribute
             this.onDie = onDie;
         }
 
+        /// <summary>
+        /// 데미지 받는 함수
+        /// </summary>
         public void TakeDamage(float damage, GameObject instigator, Action<float> onKilled)
         {
             healthPoint = Mathf.Max(0, healthPoint - damage);
@@ -26,6 +29,9 @@ namespace Shinobi.Attribute
             }
         }
 
+        /// <summary>
+        /// 사망
+        /// </summary>
         private void Die(Action<float> onKilled)
         {
             onKilled?.Invoke(experiencePoint);

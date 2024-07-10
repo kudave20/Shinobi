@@ -1,3 +1,4 @@
+using Shinobi.Core;
 using System;
 using UnityEngine;
 
@@ -7,12 +8,14 @@ namespace Shinobi.UI
     {
         [SerializeField] private CardUI[] cardsUI;
 
-        public void Init(Action onCardSelected)
+        public void Init(Action onCardSelected, TraitManager traitManager)
         {
             foreach (var cardUI in cardsUI)
             {
-                cardUI.Init(onCardSelected);
+                cardUI.Init(onCardSelected, traitManager);
             }
+
+            traitManager.ClearTraitIndices();
         }
 
         public void Enable()
