@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4063922281425078406
+--- !u!1 &5876267623232097862
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7257902306596788869}
-  - component: {fileID: 638597556458786749}
+  - component: {fileID: 6658270241852947877}
+  - component: {fileID: 4330334692842871630}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: Game Starter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7257902306596788869
+--- !u!4 &6658270241852947877
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4063922281425078406}
+  m_GameObject: {fileID: 5876267623232097862}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -32,23 +32,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &638597556458786749
+--- !u!114 &4330334692842871630
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4063922281425078406}
+  m_GameObject: {fileID: 5876267623232097862}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6675e1c05f4148e41aa36d72dc66e931, type: 3}
+  m_Script: {fileID: 11500000, guid: 867bbc9054b95304e9db5251414e492a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 522712012556192404, guid: 4c876521148b6f941b7dac200816c99c, type: 3}
-  uiManager: {fileID: 0}
-  traitManager: {fileID: 0}
-  wall: {fileID: 0}
-  waveConfig: {fileID: 11400000, guid: 8693d3aaa49ee4d49827fec666d75251, type: 2}
-  playerPosition: {x: 0, y: -4.5}
-  enemySpawnPointLeftLimit: {x: -1.5, y: 3}
-  enemySpawnPointRightLimit: {x: 1.5, y: 3}
+  delayToStart: 3
+  timerImage: {fileID: 0}
+  timerText: {fileID: 0}
+  gameManager: {fileID: 0}

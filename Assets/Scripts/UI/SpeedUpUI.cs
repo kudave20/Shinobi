@@ -19,6 +19,8 @@ namespace Shinobi.UI
 
         private void OnSpeedUp()
         {
+            if (Time.timeScale == 0) return;
+
             Time.timeScale *= speedUpMultiplier;
 
             speedUpMultiplier = 1f / speedUpMultiplier;

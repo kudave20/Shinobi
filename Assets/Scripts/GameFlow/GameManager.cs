@@ -26,7 +26,7 @@ namespace Shinobi.GameFlow
         private bool isCardSelected = false;
         private List<Enemy> enemies = new List<Enemy>();
 
-        public void Start()
+        public void Init()
         {
             Player player = Instantiate(playerPrefab, playerPosition, Quaternion.identity);
             player.Init();
