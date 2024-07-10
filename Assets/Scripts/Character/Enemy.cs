@@ -1,4 +1,5 @@
 using Shinobi.Attribute;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,6 +18,7 @@ namespace Shinobi.Character
         [SerializeField] private float speed = 1f;
         [SerializeField] private float damage = 10f;
         [SerializeField] private float experiencePoint = 10f;
+        [SerializeField] private float attackRapidity = 1.5f;
 
         private Health health = null;
         private GameObject wall = null;
@@ -24,13 +26,19 @@ namespace Shinobi.Character
 
         private const float OFFSET_Y = 0.25f; // 벽과의 y좌표 간격
 
-        public void Init(GameObject wall)
+        private float attackTimer = 0;
+
+        public event Action onGameOver = null;
+
+        public void Init(GameObject wall, Action onGameOver)
         {
             this.wall = wall;
             attackY = wall.transform.position.y + OFFSET_Y;
 
             health = GetComponent<Health>();
             health.Init(experiencePoint);
+            
+            this.onGameOver = onGameOver;
         }
 
         private void Update()
@@ -39,7 +47,7 @@ namespace Shinobi.Character
             {
                 Attack();
             }
-            else
+            else if (CanMove())
             {
                 Move();
             }
@@ -52,19 +60,27 @@ namespace Shinobi.Character
 
         private void Attack()
         {
-            wall.GetComponent<Health>().TakeDamage(damage, gameObject, /* GameOver */ null);
+            wall.GetComponent<Health>().TakeDamage(damage, gameObject, (_) => onGameOver?.Invoke());
         }
 
         private bool CanAttack()
         {
-            if (transform.position.y <= attackY)
+            attackTimer += Time.deltaTime;
+
+            if (!CanMove() && attackTimer >= attackRapidity)
             {
+                attackTimer = 0;
                 return true;
             }
             else
             {
                 return false;
             }
+        }
+
+        private bool CanMove()
+        {
+            return transform.position.y > attackY;
         }
     }
 }

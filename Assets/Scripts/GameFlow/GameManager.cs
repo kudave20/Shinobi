@@ -12,9 +12,7 @@ namespace Shinobi.GameFlow
     {
         [Header("프리팹")]
         [SerializeField] private Player playerPrefab = null;
-        [SerializeField] private ExperienceBar experienceBar = null;
-        [SerializeField] private CardSelectUI cardSelectUI = null;
-        [SerializeField] private SpeedUpUI speedUpUI = null;
+        [SerializeField] private UIManager uiManager = null;
 
         [SerializeField] private GameObject wall = null;
 
@@ -33,11 +31,14 @@ namespace Shinobi.GameFlow
 
             player.onLevelUp += () => StartCoroutine(OnPlayerLevelUp());
 
-            experienceBar.Init(player);
-            cardSelectUI.Init(() => { isCardSelected = true; });
-            speedUpUI.Init();
+            uiManager.Init(player, OnCardSelected);
 
             StartCoroutine(GameFlow());
+        }
+
+        private void OnCardSelected()
+        {
+            isCardSelected = true;
         }
 
         private IEnumerator OnPlayerLevelUp()
@@ -46,13 +47,13 @@ namespace Shinobi.GameFlow
 
             Time.timeScale = 0;
 
-            cardSelectUI.Enable();
+            uiManager.CardSelectUI.Enable();
 
             yield return new WaitUntil(() => isCardSelected);
 
             isCardSelected = false;
 
-            cardSelectUI.Disable();
+            uiManager.CardSelectUI.Disable();
 
             Time.timeScale = originalTimeScale;
         }
@@ -60,6 +61,8 @@ namespace Shinobi.GameFlow
         private IEnumerator GameFlow()
         {
             yield return SpawnEnemies();
+
+            GameOver(true);
         }
 
         private IEnumerator SpawnEnemies()
@@ -81,7 +84,7 @@ namespace Shinobi.GameFlow
                 Vector2 randomPoint = enemySpawnPointLeftLimit + new Vector2(Random.Range(0, delta), 0);
 
                 var enemy = Instantiate(waveConfig.PrefabSettings[enemyType], randomPoint, Quaternion.identity);
-                enemy.Init(wall);
+                enemy.Init(wall, () => GameOver(false));
 
                 --enemySpawnCountDic[enemyType];
 
@@ -91,6 +94,20 @@ namespace Shinobi.GameFlow
                 }
 
                 yield return new WaitForSeconds(waveConfig.SpawnDelay);
+            }
+        }
+
+        private void GameOver(bool hasClear)
+        {
+            Time.timeScale = 0;
+
+            if (hasClear)
+            {
+                print("클리어!");
+            }
+            else
+            {
+                print("게임 오버!");
             }
         }
     }
